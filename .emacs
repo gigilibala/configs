@@ -68,6 +68,8 @@
 (global-set-key "\C-r" 'swiper)
 (global-set-key (kbd "C-c j") 'counsel-git-grep)
 
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; remove this key binding. it is so annoying
 (global-unset-key (kbd "C-t"))
 
@@ -102,6 +104,13 @@
  '(font-lock-warning-face ((t (:inherit nil :foreground "color-214"))))
  '(highlight ((t (:background "color-235"))))
  '(lazy-highlight ((t (:background "brightblack"))))
+ '(magit-branch-current ((t (:inherit magit-branch-local :box 1))))
+ '(magit-branch-local ((t (:foreground "red"))))
+ '(magit-diff-added ((t (:foreground "#22aa22"))))
+ '(magit-diff-added-highlight ((t (:inherit magit-section-highlight :foreground "#22aa22"))))
+ '(magit-diff-removed ((t (:foreground "#aa2222"))))
+ '(magit-diff-removed-highlight ((t (:inherit magit-section-highlight :foreground "#aa2222"))))
+ '(magit-section-highlight ((t (:background "color-236"))))
  '(match ((t (:background "color-136"))))
  '(minibuffer-prompt ((t (:foreground "brightcyan"))))
  '(region ((t (:background "color-240"))))
@@ -165,9 +174,10 @@
  '(mouse-wheel-progressive-speed nil)
  '(package-selected-packages
    (quote
-    (yasnippet-snippets counsel ivy swiper concurrent ctable epc jedi jedi-core popup python-environment company-jedi dash deferred epl f google google-c-style let-alist parent-mode pkg-info request request-deferred rtags s yasnippet ycmd company company-c-headers company-rtags highlight-numbers hl-spotlight ecb company-ycmd wc-mode flymd smooth-scrolling auto-complete)))
+    (gerrit-download magit magit-gerrit wc-mode smooth-scrolling yasnippet-snippets counsel ivy swiper concurrent ctable epc jedi jedi-core popup python-environment company-jedi dash deferred epl f google google-c-style let-alist parent-mode pkg-info request request-deferred rtags s yasnippet ycmd company company-c-headers company-rtags highlight-numbers hl-spotlight ecb company-ycmd flymd auto-complete)))
  '(scroll-conservatively 10000)
  '(scroll-step 1)
+ '(send-mail-function (quote mailclient-send-it))
  '(show-paren-delay 0)
  '(show-paren-mode t)
  '(smooth-scroll-margin 1)
