@@ -11,37 +11,11 @@
 ;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) 
 (package-initialize)
 
-(require 'google)
-
-; auto-complete is very slow, disable for now
-;; (require 'auto-complete)
-;; (require 'auto-complete-config)
-;; (ac-config-default)
-
-;; yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
-
-(require 'smooth-scrolling)
-(setq smooth-scroll-margin 1)
-(setq scroll-step 1
-      scroll-conservatively  10000)
-
-(require 'whitespace)
-
-(require 'ido)
-(ido-mode t)
-(ido-ubiquitous-mode t)
-(setq ido-enable-flex-matching 1)
-
-(require 'smex)
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-(require 'google-ycmd)
+;(require 'google-ycmd)
 
 (add-hook 'java-mode-hook '(lambda () (setq fill-column 100)))
+(add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'python-mode-hook 'jedi:ac-setup)
 
 ;; windows system
 (when (window-system)
@@ -75,8 +49,6 @@
   (window-resize (selected-window) (- 82 (window-width)) t))
 
 ;; key bindings
-;; backspace for search bar
-(define-key isearch-mode-map [backspace] 'isearch-delete-char)
 ;; delete keys
 (global-set-key [delete] 'delete-char) ;delete next character after delete
 (global-set-key [backspace] 'delete-backward-char) ;delete backward with backspace
@@ -84,20 +56,20 @@
 (global-set-key (kbd "C-c g l") 'goto-line)
 (define-key input-decode-map "\e\e[A" [(meta up)])
 (define-key input-decode-map "\e\e[B" [(meta down)])
-(global-set-key [(meta down)] 'next-error)
-(global-set-key [(meta up)] 'previous-error)
 
 ;; next error or grep finding
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
-(global-set-key (kbd "<M-down>") 'next-error)
-(global-set-key (kbd "<M-up>") 'previous-error)
 
 (global-set-key (kbd "C-c k") 'delete-window)
 
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key "\C-s" 'swiper)
+(global-set-key "\C-r" 'swiper)
+(global-set-key (kbd "C-c j") 'counsel-git-grep)
+
 ;; remove this key binding. it is so annoying
 (global-unset-key (kbd "C-t"))
-(global-unset-key (kbd "C-c C-c"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -168,6 +140,7 @@
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(column-number-mode t)
+ '(company-idle-delay 0)
  '(compilation-scroll-output t)
  '(delete-selection-mode t)
  '(ecb-layout-name "left9")
@@ -175,11 +148,16 @@
  '(ecb-show-sources-in-directories-buffer (quote always))
  '(ecb-source-path (quote ("/usr/local/google/home/ahassani")))
  '(ecb-tip-of-the-day nil)
+ '(enable-recursive-minibuffers t)
  '(fill-column 80)
  '(flycheck-global-modes nil)
  '(font-lock-maximum-decoration t)
+ '(global-company-mode t)
  '(global-hl-line-mode t)
  '(inhibit-startup-screen t)
+ '(ivy-mode t)
+ '(ivy-use-virtual-buffers t)
+ '(jedi:complete-on-dot t)
  '(line-number-mode t)
  '(make-backup-files t)
  '(mouse-1-click-follows-link (quote double))
@@ -187,7 +165,11 @@
  '(mouse-wheel-progressive-speed nil)
  '(package-selected-packages
    (quote
-    (company-rtags highlight-numbers hl-spotlight ecb company-ycmd wc-mode flymd yasnippet smooth-scrolling smex auto-complete)))
+    (yasnippet-snippets counsel ivy swiper concurrent ctable epc jedi jedi-core popup python-environment company-jedi dash deferred epl f google google-c-style let-alist parent-mode pkg-info request request-deferred rtags s yasnippet ycmd company company-c-headers company-rtags highlight-numbers hl-spotlight ecb company-ycmd wc-mode flymd smooth-scrolling auto-complete)))
+ '(scroll-conservatively 10000)
+ '(scroll-step 1)
  '(show-paren-delay 0)
  '(show-paren-mode t)
- '(xterm-mouse-mode t))
+ '(smooth-scroll-margin 1)
+ '(xterm-mouse-mode t)
+ '(yas-global-mode t))
