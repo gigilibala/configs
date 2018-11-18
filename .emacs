@@ -108,6 +108,7 @@
  '(magit-branch-local ((t (:foreground "red"))))
  '(magit-diff-added ((t (:foreground "#22aa22"))))
  '(magit-diff-added-highlight ((t (:inherit magit-section-highlight :foreground "#22aa22"))))
+ '(magit-diff-context-highlight ((t (:inherit magit-section-highlight))))
  '(magit-diff-removed ((t (:foreground "#aa2222"))))
  '(magit-diff-removed-highlight ((t (:inherit magit-section-highlight :foreground "#aa2222"))))
  '(magit-section-highlight ((t (:background "color-236"))))
@@ -174,7 +175,7 @@
  '(mouse-wheel-progressive-speed nil)
  '(package-selected-packages
    (quote
-    (gerrit-download magit magit-gerrit wc-mode smooth-scrolling yasnippet-snippets counsel ivy swiper concurrent ctable epc jedi jedi-core popup python-environment company-jedi dash deferred epl f google google-c-style let-alist parent-mode pkg-info request request-deferred rtags s yasnippet ycmd company company-c-headers company-rtags highlight-numbers hl-spotlight ecb company-ycmd flymd auto-complete)))
+    (async ghub git-commit graphql magit-popup treepy with-editor gerrit-download magit magit-gerrit wc-mode smooth-scrolling yasnippet-snippets counsel ivy swiper concurrent ctable epc jedi jedi-core popup python-environment company-jedi dash deferred epl f google google-c-style let-alist parent-mode pkg-info request request-deferred rtags s yasnippet ycmd company company-c-headers company-rtags highlight-numbers hl-spotlight ecb company-ycmd flymd auto-complete)))
  '(scroll-conservatively 10000)
  '(scroll-step 1)
  '(send-mail-function (quote mailclient-send-it))
