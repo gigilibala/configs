@@ -11,7 +11,13 @@ git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-export PS1='\[\e[1;31m\]~{\[\e[1;35m\]\u\[\e[1;37m\]@\[\e[1;35m\]\h\[\e[1;37m\]:\[\e[1;32m\]\w\[\e[1;33m\]$(git_branch)\[\e[1;31m\]}~{\[\e[1;34m\D{%m/%e/%y}-\A\]\[\e[1;31m\]}~\n\[\e[0m\]$ '
+is_inside_chroot() {
+  if [[ -f "/etc/cros_chroot_version" ]]; then
+    echo "(chroot)"
+  fi
+}
+
+export PS1='\[\e[1;31m\]~{\[\e[1;35m\]\u\[\e[1;37m\]@\[\e[1;35m\]\h\[\e[1;37m\]:\[\e[1;34m\]$(is_inside_chroot)\[\e[1;32m\]\w\[\e[1;33m\]$(git_branch)\[\e[1;31m\]}~{\[\e[1;34m\D{%m/%e/%y}-\A\]\[\e[1;31m\]}~\n\[\e[0m\]$ '
 
 # usage: mygrep <string>
 function mygrep() { grep -HIir $@ ./ ; }
