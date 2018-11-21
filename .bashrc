@@ -37,4 +37,6 @@ function apply-cl() {
 
 export PATH=$HOME/depot_tools:$HOME/usr/bin:$HOME/chromiumos/chromite/bin:$PATH
 
-. /usr/share/autojump/autojump.sh
+if [[ -f /usr/share/autojump/autojump.sh ]]; then
+    source /usr/share/autojump/autojump.sh
+fi
