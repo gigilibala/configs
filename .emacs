@@ -175,7 +175,7 @@
  '(mouse-wheel-progressive-speed nil)
  '(package-selected-packages
    (quote
-    (async ghub git-commit graphql magit-popup treepy with-editor gerrit-download magit magit-gerrit wc-mode smooth-scrolling yasnippet-snippets counsel ivy swiper concurrent ctable epc jedi jedi-core popup python-environment company-jedi dash deferred epl f google google-c-style let-alist parent-mode pkg-info request request-deferred rtags s yasnippet ycmd company company-c-headers company-rtags highlight-numbers hl-spotlight ecb company-ycmd flymd auto-complete)))
+    (company-web magit wc-mode smooth-scrolling yasnippet-snippets counsel jedi popup company-jedi dash google google-c-style parent-mode rtags yasnippet company company-c-headers company-rtags highlight-numbers hl-spotlight ecb flymd)))
  '(scroll-conservatively 10000)
  '(scroll-step 1)
  '(send-mail-function (quote mailclient-send-it))
