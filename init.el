@@ -150,6 +150,17 @@
   :init
   (add-hook 'c-mode-common-hook 'google-set-c-style))
 
+(use-package expand-region
+  :commands ( er/expand-region er/contract-region )
+  :bind (("M-=" . er/expand-region)
+	 ("M--" . er/contract-region))
+  :ensure t)
+
+(use-package wakatime-mode
+  :ensure t
+  :init
+  (global-wakatime-mode))
+
 ;(require 'google-ycmd)
 
 (add-hook 'java-mode-hook '(lambda () (setq fill-column 100)))
