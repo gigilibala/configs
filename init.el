@@ -163,8 +163,9 @@
 (use-package wakatime-mode
   :ensure t
   :init
-  (global-wakatime-mode)
-  (setq wakatime-api-key "90e9b493-f22f-4151-8882-4abe73f1146d"))
+  (when (executable-find "wakatime")
+    (global-wakatime-mode)
+    (setq wakatime-api-key "90e9b493-f22f-4151-8882-4abe73f1146d")))
 
 (use-package which-key
   :ensure t
