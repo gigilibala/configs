@@ -6,44 +6,39 @@
 
 ;; package
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) 
 (package-initialize)
 (require 'use-package)
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
-
-(setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/")))
-      column-number-mode t
-      delete-selection-mode t
-      column-number-mode t
+(setq auto-save-default nil
+      backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/")))
       fill-column 80
       font-lock-maximum-decoration t
       inhibit-startup-screen t
-      line-number-mode t
+      make-backup-files nil
       mouse-1-click-follows-link (quote double)
-      mouse-wheel-mode t
       mouse-wheel-progressive-speed nil
       send-mail-function (quote mailclient-send-it)
       show-paren-delay 0
-      show-paren-mode t
       split-height-threshold nil
       split-width-threshold nil
-      xterm-mouse-mode t
-      show-paren-delay 0
-      make-backup-files nil
-      auto-save-default nil
       tab-always-indent 'complete)
 
-(global-hl-line-mode 1)
-(show-paren-mode 1)
-(electric-pair-mode 1)
-(global-subword-mode 1) ;; For camel case.
-(delete-selection-mode 1)
-(save-place-mode 1)
-(global-auto-revert-mode 1)
+(column-number-mode t)
+(delete-selection-mode t)
+(delete-selection-mode t)
+(electric-pair-mode t)
+(global-auto-revert-mode t)
+(global-hl-line-mode t)
+(global-subword-mode t) ;; For camel case.
+(line-number-mode t)
+(mouse-wheel-mode t)
+(save-place-mode t)
+(show-paren-mode t)
+(show-paren-mode t)
+(xterm-mouse-mode t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -72,14 +67,29 @@
   (add-hook 'python-mode-hook (company-mode -1))
   (use-package company-c-headers
     :ensure t)
+  ;; (use-package company-quickhelp
+  ;;   :ensure t)
+  ;; (use-package company-jedi
+  ;;   :ensure t)
   (use-package company-web
     :ensure t))
 
+(use-package jedi
+  :ensure t
+  :init
+  (setq jedi:complete-on-dot t)
+  (add-hook 'python-mode-hook 'jedi:setup))
+
+
 (use-package counsel
   :ensure t
-  :config
+  :init
   (setq ivy-mode t)
   (setq ivy-use-virtual-buffers t)
+  (use-package ivy-rich
+    :config
+    (ivy-rich-mode)
+    :ensure t)
   :bind(("M-x" . counsel-M-x)
 	("C-x C-f" . counsel-find-file)
 	("C-h f" . counsel-describe-function)
@@ -105,12 +115,6 @@
   (setq scroll-conservatively 10000
 	scroll-step 1
 	smooth-scroll-margin 1))
-
-(use-package jedi
-  :ensure t
-  :init
-  (setq jedi:complete-on-dot t)
-  (add-hook 'python-mode-hook 'jedi:setup))
 
 (use-package yasnippet
   :ensure t
@@ -159,7 +163,13 @@
 (use-package wakatime-mode
   :ensure t
   :init
-  (global-wakatime-mode))
+  (global-wakatime-mode)
+  (setq wakatime-api-key "90e9b493-f22f-4151-8882-4abe73f1146d"))
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
 
 ;(require 'google-ycmd)
 
@@ -200,11 +210,25 @@
   (font-lock-add-keywords nil '(("[]~^!=<>&/%.,:;$\[\|\*\+\-]" . 'font-lock-warning-face))))
 (add-hook 'prog-mode-hook 'add-keywords-faces)
 
+(provide 'init.el)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ecb-options-version "2.50")
+ '(package-selected-packages
+   (quote
+    (ivy-rich expand-region yasnippet-snippets wc-mode use-package smooth-scrolling magit highlight-numbers google-c-style flymd ecb company counsel company-web company-c-headers jedi which-key wakatime-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ecb-method-non-semantic-face ((t (:inherit ecb-methods-general-face :foreground "brightyellow"))))
+ '(ecb-source-in-directories-buffer-face ((t (:inherit ecb-directories-general-face :foreground "cyan"))))
+ '(ecb-tag-header-face ((t (:background "blue"))))
  '(font-lock-comment-face ((t (:foreground "color-130"))))
  '(font-lock-constant-face ((t (:foreground "color-45"))))
  '(font-lock-doc-face ((t (:inherit font-lock-string-face :foreground "chocolate"))))
@@ -217,7 +241,16 @@
  '(font-lock-warning-face ((t (:inherit nil :foreground "color-214"))))
  '(highlight ((t (:background "color-235"))))
  '(lazy-highlight ((t (:background "brightblack"))))
+ '(magit-branch-current ((t (:inherit magit-branch-local :box 1))))
+ '(magit-branch-local ((t (:foreground "red"))))
+ '(magit-diff-added ((t (:foreground "#22aa22"))))
+ '(magit-diff-added-highlight ((t (:inherit magit-section-highlight :foreground "#22aa22"))))
+ '(magit-diff-context-highlight ((t (:inherit magit-section-highlight))))
+ '(magit-diff-removed ((t (:foreground "#aa2222"))))
+ '(magit-diff-removed-highlight ((t (:inherit magit-section-highlight :foreground "#aa2222"))))
+ '(magit-section-highlight ((t (:background "color-236"))))
  '(match ((t (:background "color-136"))))
  '(minibuffer-prompt ((t (:foreground "brightcyan"))))
  '(region ((t (:background "color-240"))))
- '(show-paren-match ((t (:inherit nil :foreground "color-117")))))
+ '(show-paren-match ((t (:inherit nil :background "cyan")))))
+
