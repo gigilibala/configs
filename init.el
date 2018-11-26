@@ -19,6 +19,7 @@
       inhibit-startup-screen t
       make-backup-files nil
       mouse-1-click-follows-link (quote double)
+      mouse-wheel-mode t
       mouse-wheel-progressive-speed nil
       send-mail-function (quote mailclient-send-it)
       show-paren-delay 0
@@ -34,7 +35,6 @@
 (global-hl-line-mode t)
 (global-subword-mode t) ;; For camel case.
 (line-number-mode t)
-(mouse-wheel-mode t)
 (save-place-mode t)
 (show-paren-mode t)
 (show-paren-mode t)
