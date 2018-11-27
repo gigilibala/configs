@@ -80,7 +80,6 @@
   (setq jedi:complete-on-dot t)
   (add-hook 'python-mode-hook 'jedi:setup))
 
-
 (use-package counsel
   :ensure t
   :init
@@ -91,6 +90,7 @@
     (ivy-rich-mode)
     :ensure t)
   :bind(("M-x" . counsel-M-x)
+	("C-s" . swiper)
 	("C-x C-f" . counsel-find-file)
 	("C-h f" . counsel-describe-function)
 	("C-h v" . counsel-describe-variable)
