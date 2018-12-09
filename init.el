@@ -8,7 +8,7 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) 
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 (require 'use-package)
 
@@ -211,6 +211,7 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-default nil)
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(before-save-hook (quote (delete-trailing-whitespace)))
  '(company-frontends nil)
  '(ecb-options-version "2.50")
  '(fill-column 80)
@@ -261,4 +262,3 @@
  '(region ((t (:background "color-240"))))
  '(show-paren-match ((t (:inherit nil :background "cyan"))))
  '(speedbar-tag-face ((t (:foreground "#d7ff00")))))
-
