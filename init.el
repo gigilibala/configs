@@ -153,9 +153,6 @@
   :commands (info)
   :ensure t)
 
-(use-package popup
-  :ensure t)
-
 (use-package markdown-mode
   :ensure t)
 
@@ -212,7 +209,6 @@
  '(auto-save-default nil)
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(before-save-hook (quote (delete-trailing-whitespace)))
- '(company-frontends nil)
  '(ecb-options-version "2.50")
  '(fill-column 80)
  '(font-lock-maximum-decoration t)
