@@ -12,21 +12,6 @@
 (package-initialize)
 (require 'use-package)
 
-(setq auto-save-default nil
-      backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/")))
-      fill-column 80
-      font-lock-maximum-decoration t
-      inhibit-startup-screen t
-      make-backup-files nil
-      mouse-1-click-follows-link (quote double)
-      mouse-wheel-mode t
-      mouse-wheel-progressive-speed nil
-      send-mail-function (quote mailclient-send-it)
-      show-paren-delay 0
-      split-height-threshold nil
-      split-width-threshold nil
-      tab-always-indent 'complete)
-
 (column-number-mode t)
 (delete-selection-mode t)
 (delete-selection-mode t)
@@ -58,27 +43,23 @@
 ;; remove this key binding. it is so annoying
 (global-unset-key (kbd "C-t"))
 
+(use-package quelpa-use-package
+  :ensure t)
+
 (use-package company
   :ensure t
   :config
   (setq company-idle-delay 0
 	company-minimum-prefix-length 3)
+  (add-hook 'python-mode-hook (lambda ()
+				(add-to-list 'company-backends 'company-jedi)))
   (global-company-mode t)
-  (add-hook 'python-mode-hook (company-mode -1))
   (use-package company-c-headers
     :ensure t)
-  ;; (use-package company-quickhelp
-  ;;   :ensure t)
-  ;; (use-package company-jedi
-  ;;   :ensure t)
+  (use-package company-jedi
+    :ensure t)
   (use-package company-web
     :ensure t))
-
-(use-package jedi
-  :ensure t
-  :init
-  (setq jedi:complete-on-dot t)
-  (add-hook 'python-mode-hook 'jedi:setup))
 
 (use-package counsel
   :ensure t
@@ -90,7 +71,7 @@
     (ivy-rich-mode)
     :ensure t)
   :bind(("M-x" . counsel-M-x)
-	("C-s" . swiper)
+	("C-c s" . swiper)
 	("C-x C-f" . counsel-find-file)
 	("C-h f" . counsel-describe-function)
 	("C-h v" . counsel-describe-variable)
@@ -138,6 +119,7 @@
 	ecb-source-path (quote ("/usr/local/google/home/ahassani"))
 	ecb-tip-of-the-day nil)
   :custom-face
+  (speedbar-tag-face ((t (:foreground "#d7ff00"))))
   (ecb-method-non-semantic-face ((t (:inherit ecb-methods-general-face :foreground "brightyellow"))))
   (ecb-source-in-directories-buffer-face ((t (:inherit ecb-directories-general-face :foreground "cyan"))))
   (ecb-tag-header-face ((t (:background "blue")))))
@@ -167,10 +149,15 @@
     (global-wakatime-mode)
     (setq wakatime-api-key "90e9b493-f22f-4151-8882-4abe73f1146d")))
 
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-mode))
+(use-package python-info
+  :commands (info)
+  :ensure t)
+
+(use-package popup
+  :ensure t)
+
+(use-package markdown-mode
+  :ensure t)
 
 ;(require 'google-ycmd)
 
@@ -218,10 +205,25 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(auto-save-default nil)
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(company-frontends nil)
  '(ecb-options-version "2.50")
+ '(fill-column 80)
+ '(font-lock-maximum-decoration t)
+ '(inhibit-startup-screen t)
+ '(make-backup-files nil)
+ '(mouse-1-click-follows-link (quote double))
+ '(mouse-wheel-mode t)
+ '(mouse-wheel-progressive-speed nil)
+ '(send-mail-function (quote mailclient-send-it))
+ '(show-paren-delay 0)
+ '(split-height-threshold nil)
+ '(split-width-threshold nil)
+ '(tab-always-indent 'complete)
  '(package-selected-packages
    (quote
-    (ivy-rich expand-region yasnippet-snippets wc-mode use-package smooth-scrolling magit highlight-numbers google-c-style flymd ecb company counsel company-web company-c-headers jedi which-key wakatime-mode))))
+    (markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode wakatime-mode use-package smooth-scrolling python-info popup magit ivy-rich highlight-numbers google-c-style flymd expand-region ecb counsel company company-web company-jedi company-c-headers))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -253,5 +255,6 @@
  '(match ((t (:background "color-136"))))
  '(minibuffer-prompt ((t (:foreground "brightcyan"))))
  '(region ((t (:background "color-240"))))
- '(show-paren-match ((t (:inherit nil :background "cyan")))))
+ '(show-paren-match ((t (:inherit nil :background "cyan"))))
+ '(speedbar-tag-face ((t (:foreground "#d7ff00")))))
 
