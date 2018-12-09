@@ -159,6 +159,10 @@
 (use-package markdown-mode
   :ensure t)
 
+(use-package company-popup
+  :quelpa ((company-popup :fetcher github :repo "gigilibala/company-popup")
+	   :upgrade t))
+
 ;(require 'google-ycmd)
 
 (add-hook 'java-mode-hook '(lambda () (setq fill-column 100)))
@@ -216,14 +220,14 @@
  '(mouse-1-click-follows-link (quote double))
  '(mouse-wheel-mode t)
  '(mouse-wheel-progressive-speed nil)
+ '(package-selected-packages
+   (quote
+    (company-popup markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode wakatime-mode use-package smooth-scrolling python-info popup magit ivy-rich highlight-numbers google-c-style flymd expand-region ecb counsel company company-web company-jedi company-c-headers)))
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-delay 0)
  '(split-height-threshold nil)
  '(split-width-threshold nil)
- '(tab-always-indent 'complete)
- '(package-selected-packages
-   (quote
-    (markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode wakatime-mode use-package smooth-scrolling python-info popup magit ivy-rich highlight-numbers google-c-style flymd expand-region ecb counsel company company-web company-jedi company-c-headers))))
+ '(tab-always-indent (quote complete)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
