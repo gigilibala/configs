@@ -160,6 +160,16 @@
   :quelpa ((company-popup :fetcher github :repo "gigilibala/company-popup")
 	   :upgrade t))
 
+(use-package git-commit
+  :ensure nil
+  :preface
+  (defun me/git-commit-set-fill-column ()
+    (setq-local comment-auto-fill-only-comments nil)
+    (setq git-commit-summary-max-length 50)
+    (setq fill-column 72))
+  :config
+  (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column))
+
 ;(require 'google-ycmd)
 
 (add-hook 'java-mode-hook '(lambda () (setq fill-column 100)))
@@ -186,8 +196,7 @@
   (setq backup fill-column)
   (setq fill-column 100000)
   (fill-paragraph nil)
-  (setq fill-column backup)
-)
+  (setq fill-column backup))
 
 (defun set-80-columns ()
   "Set the selected window to 80 columns."
@@ -217,6 +226,7 @@
  '(mouse-1-click-follows-link (quote double))
  '(mouse-wheel-mode t)
  '(mouse-wheel-progressive-speed nil)
+ '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
     (company-popup markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode wakatime-mode use-package smooth-scrolling python-info popup magit ivy-rich highlight-numbers google-c-style flymd expand-region ecb counsel company company-web company-jedi company-c-headers)))

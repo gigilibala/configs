@@ -29,9 +29,9 @@ function grep-replace() {
   eval $command
 }
 
-function apply-cl() { 
-  ref=`git ls-remote cros | grep $1 | cut -f2`; 
-  git fetch cros $ref; 
+function apply-cl() {
+  ref=`git ls-remote cros | grep $1 | cut -f2`;
+  git fetch cros $ref;
   git cherry-pick FETCH_HEAD;
 }
 
@@ -40,3 +40,12 @@ export PATH=$HOME/depot_tools:$HOME/usr/bin:$HOME/chromiumos/chromite/bin:$PATH
 if [[ -f /usr/share/autojump/autojump.sh ]]; then
     source /usr/share/autojump/autojump.sh
 fi
+
+
+function cros-ssh() {
+  ssh  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentityFile=~/.ssh/testing_rsa root@$1
+}
+
+function cros-scp() {
+  scp  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentityFile=~/.ssh/testing_rsa $1 $2
+}
