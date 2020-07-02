@@ -39,9 +39,12 @@
 ;; next error or grep finding.
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
-(global-set-key (kbd "C-c k") 'delete-window)
 ;; remove this key binding. it is so annoying
 (global-unset-key (kbd "C-t"))
+
+;; Key for compile
+(global-set-key (kbd "C-c C-c") 'recompile)
+
 
 (use-package quelpa-use-package
   :ensure t)
@@ -114,10 +117,10 @@
   :commands (ecb-activate)
   :config
   (setq ecb-layout-name "left9"
-	ecb-options-version "2.50"
-	ecb-show-sources-in-directories-buffer (quote always)
-	ecb-source-path (quote ("/usr/local/google/home/ahassani"))
-	ecb-tip-of-the-day nil)
+				ecb-options-version "2.50"
+				ecb-show-sources-in-directories-buffer (quote always)
+				ecb-source-path (quote ("/usr/local/google/home/ahassani"))
+				ecb-tip-of-the-day nil)
   :custom-face
   (speedbar-tag-face ((t (:foreground "#d7ff00"))))
   (ecb-method-non-semantic-face ((t (:inherit ecb-methods-general-face :foreground "brightyellow"))))
@@ -170,8 +173,6 @@
   :config
   (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column))
 
-;(require 'google-ycmd)
-
 (add-hook 'java-mode-hook '(lambda () (setq fill-column 100)))
 (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
 
@@ -208,6 +209,14 @@
   (font-lock-add-keywords nil '(("[]~^!=<>&/%.,:;$\[\|\*\+\-]" . 'font-lock-warning-face))))
 (add-hook 'prog-mode-hook 'add-keywords-faces)
 
+;; (defun copy-line (arg)
+;;   "Copy lines (as many as prefix argument) in the kill ring"
+;;   (interactive "p")
+;;   (kill-ring-save (line-beginning-position)
+;;                   (line-beginning-position (+ 1 arg))))
+;; (global-set-key (kbd "C-k") 'kill-whole-line)
+;; (global-set-key (kbd "C-c k") 'copy-line)
+
 (provide 'init.el)
 
 (custom-set-variables
@@ -234,7 +243,8 @@
  '(show-paren-delay 0)
  '(split-height-threshold nil)
  '(split-width-threshold nil)
- '(tab-always-indent (quote complete)))
+ '(tab-always-indent (quote complete))
+ '(tab-width 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

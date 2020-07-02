@@ -1,3 +1,4 @@
+#!/bin/bash
 alias emacs='emacsclient -t'
 export ALTERNATE_EDITOR=''
 export EDITOR='emacsclient -t'
@@ -35,7 +36,7 @@ function apply-cl() {
   git cherry-pick FETCH_HEAD;
 }
 
-export PATH=$HOME/depot_tools:$HOME/usr/bin:$HOME/chromiumos/chromite/bin:$PATH
+export PATH=$PATH:$HOME/usr/bin:$HOME/chromiumos/chromite/bin:$HOME/goma:$HOME/depot_tools:$HOME/trunk/skylab
 
 if [[ -f /usr/share/autojump/autojump.sh ]]; then
     source /usr/share/autojump/autojump.sh
