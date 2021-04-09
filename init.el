@@ -43,7 +43,7 @@
 (global-unset-key (kbd "C-t"))
 
 ;; Key for compile
-(global-set-key (kbd "C-c C-c") 'recompile)
+(global-set-key (kbd "M-2") 'recompile)
 
 
 (use-package quelpa-use-package
@@ -83,6 +83,10 @@
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status))
+	:bind (:map magit-file-section-map
+							("RET" . magit-diff-visit-file-other-window)
+							:map magit-hunk-section-map
+							("RET" . magit-diff-visit-file-other-window))
   :custom-face
   (magit-branch-current ((t (:inherit magit-branch-local :box 1))))
   (magit-branch-local ((t (:foreground "red"))))
@@ -145,19 +149,16 @@
 	 ("M--" . er/contract-region))
   :ensure t)
 
-(use-package wakatime-mode
-  :ensure t
-  :init
-  (when (executable-find "wakatime")
-    (global-wakatime-mode)
-    (setq wakatime-api-key "90e9b493-f22f-4151-8882-4abe73f1146d")))
-
 (use-package python-info
   :commands (info)
   :ensure t)
 
 (use-package markdown-mode
   :ensure t)
+
+(use-package bazel-mode
+  :ensure t)
+(add-to-list 'auto-mode-alist '("\\.star\\'" . bazel-mode))
 
 (use-package company-popup
   :quelpa ((company-popup :fetcher github :repo "gigilibala/company-popup")

@@ -25,7 +25,14 @@ function mygrep() { grep -HIir $@ ./ ; }
 
 # usage: grep-replace <src> <from> <to>
 function grep-replace() {
-  command="grep -rl '$2' $1 | xargs sed -i 's/$2/$3/g'"
+  command="grep --exclude-dir=.git -rl '$2' $1 | xargs sed -i 's/$2/$3/g'"
+  echo $command
+  eval $command
+}
+
+# usage: grep-replace <src> <from> <to>
+function grep-replace-file() {
+  command="grep --exclude-dir=.git  -rl '$2' $1 | xargs sed -i 's|$2|$3|g'"
   echo $command
   eval $command
 }
@@ -36,15 +43,19 @@ function apply-cl() {
   git cherry-pick FETCH_HEAD;
 }
 
-export PATH=$PATH:$HOME/usr/bin:$HOME/chromiumos/chromite/bin:$HOME/goma:$HOME/depot_tools:$HOME/trunk/skylab
+export PATH=$PATH:$HOME/usr/bin:$HOME/chromiumos/chromite/bin:$HOME/depot_tools:$HOME/goma:$HOME/trunk/skylab
 
 if [[ -f /usr/share/autojump/autojump.sh ]]; then
     source /usr/share/autojump/autojump.sh
 fi
 
 
-function cros-ssh() {
-  ssh  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentityFile=~/.ssh/testing_rsa root@$1
+function host() {
+		cat "/home/ahassani/host$1"
+}
+
+function set-host() {
+		echo $2 > "/home/ahassani/host$1"
 }
 
 function cros-scp() {
