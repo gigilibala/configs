@@ -51,11 +51,11 @@ fi
 
 
 function host() {
-		cat "/home/ahassani/host$1"
+  cat "/home/ahassani/host$1"
 }
 
 function set-host() {
-		echo $2 > "/home/ahassani/host$1"
+  echo $2 > "/home/ahassani/host$1"
 }
 
 function cros-scp() {

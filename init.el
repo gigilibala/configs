@@ -4,11 +4,8 @@
 ; Last modified: 08/17/2014
 ;-------------------------------------------------------------------------------
 
-;; package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 (require 'use-package)
 
@@ -116,21 +113,6 @@
   :config
   (add-hook 'prog-mode-hook 'highlight-numbers-mode))
 
-(use-package ecb
-  :ensure t
-  :commands (ecb-activate)
-  :config
-  (setq ecb-layout-name "left9"
-				ecb-options-version "2.50"
-				ecb-show-sources-in-directories-buffer (quote always)
-				ecb-source-path (quote ("/usr/local/google/home/ahassani"))
-				ecb-tip-of-the-day nil)
-  :custom-face
-  (speedbar-tag-face ((t (:foreground "#d7ff00"))))
-  (ecb-method-non-semantic-face ((t (:inherit ecb-methods-general-face :foreground "brightyellow"))))
-  (ecb-source-in-directories-buffer-face ((t (:inherit ecb-directories-general-face :foreground "cyan"))))
-  (ecb-tag-header-face ((t (:background "blue")))))
-
 (use-package flymd
   :commands (flymd-flyit)
   :ensure t)
@@ -156,13 +138,9 @@
 (use-package markdown-mode
   :ensure t)
 
-(use-package bazel-mode
-  :ensure t)
-(add-to-list 'auto-mode-alist '("\\.star\\'" . bazel-mode))
-
-(use-package company-popup
-  :quelpa ((company-popup :fetcher github :repo "gigilibala/company-popup")
-	   :upgrade t))
+; (use-package company-popup
+; :quelpa ((company-popup :fetcher github :repo "gigilibala/company-popup")
+;	   :upgrade t))
 
 (use-package git-commit
   :ensure nil
@@ -238,8 +216,8 @@
  '(mouse-wheel-progressive-speed nil)
  '(org-startup-truncated nil)
  '(package-selected-packages
-   (quote
-    (company-popup markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode wakatime-mode use-package smooth-scrolling python-info popup magit ivy-rich highlight-numbers google-c-style flymd expand-region ecb counsel company company-web company-jedi company-c-headers)))
+	 (quote
+		(markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode wakatime-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region ecb counsel company company-web company-jedi company-c-headers)))
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-delay 0)
  '(split-height-threshold nil)
