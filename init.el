@@ -30,18 +30,15 @@
 (global-set-key [backspace] 'delete-backward-char) ;delete backward with backspace
 ;; goto line
 (global-set-key (kbd "C-c g l") 'goto-line)
-;; I don't know what these do exactly.
-(define-key input-decode-map "\e\e[A" [(meta up)])
-(define-key input-decode-map "\e\e[B" [(meta down)])
 ;; next error or grep finding.
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
-;; remove this key binding. it is so annoying
+;; Remove this key binding. it is so annoying. Also used by tmux.
 (global-unset-key (kbd "C-t"))
 
-;; Key for compile
+;; Keys for compile
+(global-set-key (kbd "M-1") 'compile)
 (global-set-key (kbd "M-2") 'recompile)
-
 
 (use-package quelpa-use-package
   :ensure t)
@@ -49,8 +46,7 @@
 (use-package company
   :ensure t
   :config
-  (setq company-idle-delay 0
-	company-minimum-prefix-length 3)
+  (setq company-idle-delay 0 company-minimum-prefix-length 3)
   (add-hook 'python-mode-hook (lambda ()
 				(add-to-list 'company-backends 'company-jedi)))
   (global-company-mode t)
@@ -64,18 +60,25 @@
 (use-package counsel
   :ensure t
   :init
-  (setq ivy-mode t)
-  (setq ivy-use-virtual-buffers t)
+	(use-package ivy
+		:ensure t
+		:init
+		(setq ivy-mode t)
+		(setq ivy-use-virtual-buffers t)
+		:config
+		(define-key ivy-minibuffer-map (kbd "M-n") 'ivy-next-line)
+		(define-key ivy-minibuffer-map (kbd "M-p") 'ivy-previous-line))
   (use-package ivy-rich
+		:ensure t
+		:init
     :config
-    (ivy-rich-mode)
-    :ensure t)
+    (ivy-rich-mode))
   :bind(("M-x" . counsel-M-x)
-	("C-c s" . swiper)
-	("C-x C-f" . counsel-find-file)
-	("C-h f" . counsel-describe-function)
-	("C-h v" . counsel-describe-variable)
-	("C-c j" . counsel-git-grep)))
+				("C-c s" . swiper)
+				("C-x C-f" . counsel-find-file)
+				("C-h f" . counsel-describe-function)
+				("C-h v" . counsel-describe-variable)
+				("C-c j" . counsel-git-grep)))
 
 (use-package magit
   :ensure t
@@ -103,11 +106,11 @@
 
 (use-package yasnippet
   :ensure t
+	:bind (("C-c C-y" . yas-insert-snippet))
   :config
-  (setq yas-global-mode t)
+  (yas-global-mode t)
   (use-package yasnippet-snippets
     :ensure t))
-
 (use-package highlight-numbers
   :ensure t
   :config
