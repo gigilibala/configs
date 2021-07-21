@@ -48,7 +48,7 @@
   :config
   (setq company-idle-delay 0 company-minimum-prefix-length 3)
   (add-hook 'python-mode-hook (lambda ()
-				(add-to-list 'company-backends 'company-jedi)))
+        (add-to-list 'company-backends 'company-jedi)))
   (global-company-mode t)
   (use-package company-c-headers
     :ensure t)
@@ -60,33 +60,33 @@
 (use-package counsel
   :ensure t
   :init
-	(use-package ivy
-		:ensure t
-		:init
-		(setq ivy-mode t)
-		(setq ivy-use-virtual-buffers t)
-		:config
-		(define-key ivy-minibuffer-map (kbd "M-n") 'ivy-next-line)
-		(define-key ivy-minibuffer-map (kbd "M-p") 'ivy-previous-line))
+  (use-package ivy
+    :ensure t
+    :init
+    (setq ivy-mode t)
+    (setq ivy-use-virtual-buffers t)
+    :config
+    (define-key ivy-minibuffer-map (kbd "M-n") 'ivy-next-line)
+    (define-key ivy-minibuffer-map (kbd "M-p") 'ivy-previous-line))
   (use-package ivy-rich
-		:ensure t
-		:init
+    :ensure t
+    :init
     :config
     (ivy-rich-mode))
   :bind(("M-x" . counsel-M-x)
-				("C-c s" . swiper)
-				("C-x C-f" . counsel-find-file)
-				("C-h f" . counsel-describe-function)
-				("C-h v" . counsel-describe-variable)
-				("C-c j" . counsel-git-grep)))
+        ("C-c s" . swiper)
+        ("C-x C-f" . counsel-find-file)
+        ("C-h f" . counsel-describe-function)
+        ("C-h v" . counsel-describe-variable)
+        ("C-c j" . counsel-git-grep)))
 
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status))
-	:bind (:map magit-file-section-map
-							("RET" . magit-diff-visit-file-other-window)
-							:map magit-hunk-section-map
-							("RET" . magit-diff-visit-file-other-window))
+  :bind (:map magit-file-section-map
+              ("RET" . magit-diff-visit-file-other-window)
+              :map magit-hunk-section-map
+              ("RET" . magit-diff-visit-file-other-window))
   :custom-face
   (magit-branch-current ((t (:inherit magit-branch-local :box 1))))
   (magit-branch-local ((t (:foreground "red"))))
@@ -101,14 +101,16 @@
   :ensure t
   :config
   (setq scroll-conservatively 10000
-	scroll-step 1
-	smooth-scroll-margin 1))
+  scroll-step 1
+  smooth-scroll-margin 1))
 
 (use-package yasnippet
   :ensure t
-	:bind (("C-c C-y" . yas-insert-snippet))
+  :bind (("C-c C-y" . yas-insert-snippet))
   :config
   (yas-global-mode t)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
+  (define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
   (use-package yasnippet-snippets
     :ensure t))
 (use-package highlight-numbers
@@ -131,7 +133,7 @@
 (use-package expand-region
   :commands ( er/expand-region er/contract-region )
   :bind (("M-=" . er/expand-region)
-	 ("M--" . er/contract-region))
+   ("M--" . er/contract-region))
   :ensure t)
 
 (use-package python-info
@@ -143,7 +145,7 @@
 
 ; (use-package company-popup
 ; :quelpa ((company-popup :fetcher github :repo "gigilibala/company-popup")
-;	   :upgrade t))
+;    :upgrade t))
 
 (use-package git-commit
   :ensure nil
@@ -170,7 +172,7 @@
   "Ask whether or not to close, and then close if y was pressed"
   (interactive)
   (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
-	  (save-buffers-kill-terminal)
+    (save-buffers-kill-terminal)
     (message "Cancelled exit")))
 
 (defun unfill-paragraph ()
@@ -212,6 +214,7 @@
  '(ecb-options-version "2.50")
  '(fill-column 80)
  '(font-lock-maximum-decoration t)
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(mouse-1-click-follows-link (quote double))
@@ -219,8 +222,8 @@
  '(mouse-wheel-progressive-speed nil)
  '(org-startup-truncated nil)
  '(package-selected-packages
-	 (quote
-		(markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode wakatime-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region ecb counsel company company-web company-jedi company-c-headers)))
+   (quote
+    (markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode wakatime-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region ecb counsel company company-web company-jedi company-c-headers)))
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-delay 0)
  '(split-height-threshold nil)
