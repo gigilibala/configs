@@ -47,8 +47,8 @@
   :ensure t
   :config
   (setq company-idle-delay 0 company-minimum-prefix-length 3)
-  (add-hook 'python-mode-hook (lambda ()
-        (add-to-list 'company-backends 'company-jedi)))
+  (add-hook 'python-mode-hook
+            (lambda () (add-to-list 'company-backends 'company-jedi)))
   (global-company-mode t)
   (use-package company-c-headers
     :ensure t)
@@ -101,8 +101,8 @@
   :ensure t
   :config
   (setq scroll-conservatively 10000
-  scroll-step 1
-  smooth-scroll-margin 1))
+        scroll-step 1
+        smooth-scroll-margin 1))
 
 (use-package yasnippet
   :ensure t
@@ -133,7 +133,7 @@
 (use-package expand-region
   :commands ( er/expand-region er/contract-region )
   :bind (("M-=" . er/expand-region)
-   ("M--" . er/contract-region))
+         ("M--" . er/contract-region))
   :ensure t)
 
 (use-package python-info
@@ -172,7 +172,7 @@
   "Ask whether or not to close, and then close if y was pressed"
   (interactive)
   (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
-    (save-buffers-kill-terminal)
+      (save-buffers-kill-terminal)
     (message "Cancelled exit")))
 
 (defun unfill-paragraph ()
