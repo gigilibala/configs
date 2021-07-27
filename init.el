@@ -31,6 +31,10 @@
 (use-package quelpa-use-package
   :ensure t)
 
+(use-package restclient
+  :ensure t)
+(add-to-list 'auto-mode-alist '("\\.rest\\'" . restclient-mode))
+
 (use-package company
   :ensure t
   :config
@@ -43,6 +47,8 @@
   (use-package company-jedi
     :ensure t)
   (use-package company-web
+    :ensure t)
+  (use-pacakge company-restclient
     :ensure t))
 
 (use-package counsel
@@ -222,7 +228,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-jedi company-c-headers)))
+    (company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-jedi company-c-headers)))
  '(save-place-mode t)
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-delay 0)
