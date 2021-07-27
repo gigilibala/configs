@@ -31,26 +31,6 @@
 (use-package quelpa-use-package
   :ensure t)
 
-(use-package restclient
-  :ensure t)
-(add-to-list 'auto-mode-alist '("\\.rest\\'" . restclient-mode))
-
-(use-package company
-  :ensure t
-  :config
-  (setq company-idle-delay 0 company-minimum-prefix-length 3)
-  (add-hook 'python-mode-hook
-            (lambda () (add-to-list 'company-backends 'company-jedi)))
-  (global-company-mode t)
-  (use-package company-c-headers
-    :ensure t)
-  (use-package company-jedi
-    :ensure t)
-  (use-package company-web
-    :ensure t)
-  (use-pacakge company-restclient
-    :ensure t))
-
 (use-package counsel
   :ensure t
   :init
@@ -136,6 +116,26 @@
 
 (use-package markdown-mode
   :ensure t)
+
+(use-package restclient
+  :ensure t)
+(add-to-list 'auto-mode-alist '("\\.rest\\'" . restclient-mode))
+
+(use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0 company-minimum-prefix-length 3)
+  (add-hook 'python-mode-hook
+            (lambda () (add-to-list 'company-backends 'company-jedi)))
+  (global-company-mode t)
+  (use-package company-c-headers
+    :ensure t)
+  (use-package company-jedi
+    :ensure t)
+  (use-package company-web
+    :ensure t)
+  (use-pacakge company-restclient
+    :ensure t))
 
 ; (use-package company-popup
 ; :quelpa ((company-popup :fetcher github :repo "gigilibala/company-popup")
