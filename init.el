@@ -9,19 +9,6 @@
 (package-initialize)
 (require 'use-package)
 
-(column-number-mode t)
-(delete-selection-mode t)
-(delete-selection-mode t)
-(electric-pair-mode t)
-(global-auto-revert-mode t)
-(global-hl-line-mode t)
-(global-subword-mode t) ;; For camel case.
-(line-number-mode t)
-(save-place-mode t)
-(show-paren-mode t)
-(show-paren-mode t)
-(xterm-mouse-mode t)
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; key bindings
@@ -160,6 +147,11 @@
 (add-hook 'java-mode-hook '(lambda () (setq fill-column 100)))
 (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
 
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode t))
+
 ;; windows system
 (when (window-system)
   (set-background-color "gray20")
@@ -211,11 +203,17 @@
  '(auto-save-default nil)
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(before-save-hook (quote (delete-trailing-whitespace)))
- '(ecb-options-version "2.50")
+ '(column-number-mode t)
+ '(delete-selection-mode t)
+ '(electric-pair-mode t)
  '(fill-column 80)
  '(font-lock-maximum-decoration t)
+ '(global-auto-revert-mode t)
+ '(global-hl-line-mode t)
+ '(global-subword-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(line-number-mode t)
  '(make-backup-files nil)
  '(mouse-1-click-follows-link (quote double))
  '(mouse-wheel-mode t)
@@ -223,21 +221,21 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode wakatime-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region ecb counsel company company-web company-jedi company-c-headers)))
+    (markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-jedi company-c-headers)))
+ '(save-place-mode t)
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-delay 0)
+ '(show-paren-mode t)
  '(split-height-threshold nil)
  '(split-width-threshold nil)
  '(tab-always-indent (quote complete))
- '(tab-width 2))
+ '(tab-width 2)
+ '(xterm-mouse-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ecb-method-non-semantic-face ((t (:inherit ecb-methods-general-face :foreground "brightyellow"))))
- '(ecb-source-in-directories-buffer-face ((t (:inherit ecb-directories-general-face :foreground "cyan"))))
- '(ecb-tag-header-face ((t (:background "blue"))))
  '(font-lock-comment-face ((t (:foreground "color-130"))))
  '(font-lock-constant-face ((t (:foreground "color-45"))))
  '(font-lock-doc-face ((t (:inherit font-lock-string-face :foreground "chocolate"))))
@@ -261,5 +259,4 @@
  '(match ((t (:background "color-136"))))
  '(minibuffer-prompt ((t (:foreground "brightcyan"))))
  '(region ((t (:background "color-240"))))
- '(show-paren-match ((t (:inherit nil :background "cyan"))))
- '(speedbar-tag-face ((t (:foreground "#d7ff00")))))
+ '(show-paren-match ((t (:inherit nil :background "cyan")))))
