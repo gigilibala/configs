@@ -7,7 +7,6 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
-(require 'use-package)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -26,6 +25,8 @@
 ;; Keys for compile
 (global-set-key (kbd "M-1") 'compile)
 (global-set-key (kbd "M-2") 'recompile)
+
+(require 'use-package)
 
 (use-package quelpa-use-package
   :ensure t)
