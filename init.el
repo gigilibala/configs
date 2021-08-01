@@ -134,7 +134,7 @@
     :ensure t)
   (use-package company-web
     :ensure t)
-  (use-pacakge company-restclient
+  (use-package company-restclient
     :ensure t))
 
 ; (use-package company-popup
@@ -201,6 +201,8 @@
 ;; (global-set-key (kbd "C-c k") 'copy-line)
 
 (provide 'init.el)
+
+(elpy-enable)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
