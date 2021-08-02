@@ -131,10 +131,13 @@
     :ensure t)
   (use-package company-jedi
     :ensure t)
+  (use-package company-go
+    :ensure t)
   (use-package company-web
     :ensure t)
   (use-package company-restclient
     :ensure t))
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
 ; (use-package company-popup
 ; :quelpa ((company-popup :fetcher github :repo "gigilibala/company-popup")
@@ -229,7 +232,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-jedi company-c-headers)))
+    (company-go company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-jedi company-c-headers)))
  '(save-place-mode t)
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-delay 0)
