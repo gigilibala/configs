@@ -1,7 +1,6 @@
 ;-------------------------------------------------------------------------------
 ; .emacs configuration file
-; Author: Amin Hassani (ahassani4@gmail.com)
-; Last modified: 08/17/2014
+; Author: Amin Hassani (gigilibala4@gmail.com)
 ;-------------------------------------------------------------------------------
 
 (require 'package)
