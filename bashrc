@@ -43,7 +43,7 @@ function apply-cl() {
   git cherry-pick FETCH_HEAD;
 }
 
-export PATH=$PATH:$HOME/usr/bin:/opt/android-studio/bin
+export PATH=$PATH:$HOME/usr/bin:/opt/android-studio/bin:$HOME/go/bin
 
 if [[ -f /usr/share/autojump/autojump.sh ]]; then
     source /usr/share/autojump/autojump.sh

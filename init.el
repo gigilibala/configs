@@ -153,10 +153,13 @@
   (which-key-mode t))
 
 (use-package go-mode
+  :ensure t)
+
+(use-package lsp-mode
   :ensure t
-  :config
-  (use-package company-go
-    :ensure t))
+  :hook (go-mode . lsp)
+  :hook (python-mode . lsp)
+    :commands lsp)
 
 (use-package restclient
   :ensure t
@@ -209,7 +212,7 @@
 
 (provide 'init.el)
 
-(elpy-enable)
+; (elpy-enable)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -237,7 +240,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-go company-web company-jedi company-c-headers)))
+    (go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-jedi company-c-headers)))
  '(save-place-mode t)
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-delay 0)
