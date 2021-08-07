@@ -120,12 +120,8 @@
   :ensure t
   :config
   (setq company-idle-delay 0 company-minimum-prefix-length 3)
-  (add-hook 'python-mode-hook
-            (lambda () (add-to-list 'company-backends 'company-jedi)))
   (global-company-mode t)
   (use-package company-c-headers
-    :ensure t)
-  (use-package company-jedi
     :ensure t)
   (use-package company-web
     :ensure t))
@@ -155,11 +151,16 @@
 (use-package go-mode
   :ensure t)
 
+(use-package lsp-pyright
+  :ensure t)
+
 (use-package lsp-mode
   :ensure t
   :hook (go-mode . lsp)
   :hook (python-mode . lsp)
-    :commands lsp)
+  :commands lsp)
+
+; (elpy-enable)
 
 (use-package restclient
   :ensure t
@@ -212,8 +213,6 @@
 
 (provide 'init.el)
 
-; (elpy-enable)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -240,7 +239,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-jedi company-c-headers)))
+    (lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
  '(save-place-mode t)
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-delay 0)
@@ -249,6 +248,7 @@
  '(split-width-threshold nil)
  '(tab-always-indent (quote complete))
  '(tab-width 2)
+ '(read-process-output-max (* 1024 1024)) ;; 1mb
  '(xterm-mouse-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
