@@ -109,10 +109,6 @@
          ("M--" . er/contract-region))
   :ensure t)
 
-(use-package python-info
-  :commands (info)
-  :ensure t)
-
 (use-package markdown-mode
   :ensure t)
 
@@ -159,6 +155,9 @@
   :hook (go-mode . lsp)
   :hook (python-mode . lsp)
   :commands lsp)
+
+(use-package lsp-ui
+  :ensure t)
 
 ; (elpy-enable)
 
@@ -239,7 +238,8 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
+    (lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
+ '(read-process-output-max (* 1024 1024))
  '(save-place-mode t)
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-delay 0)
@@ -248,7 +248,6 @@
  '(split-width-threshold nil)
  '(tab-always-indent (quote complete))
  '(tab-width 2)
- '(read-process-output-max (* 1024 1024)) ;; 1mb
  '(xterm-mouse-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
