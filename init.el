@@ -202,14 +202,6 @@
   (font-lock-add-keywords nil '(("[]~^!=<>&/%.,:;$\[\|\*\+\-]" . 'font-lock-warning-face))))
 (add-hook 'prog-mode-hook 'add-keywords-faces)
 
-;; (defun copy-line (arg)
-;;   "Copy lines (as many as prefix argument) in the kill ring"
-;;   (interactive "p")
-;;   (kill-ring-save (line-beginning-position)
-;;                   (line-beginning-position (+ 1 arg))))
-;; (global-set-key (kbd "C-k") 'kill-whole-line)
-;; (global-set-key (kbd "C-c k") 'copy-line)
-
 (provide 'init.el)
 
 (custom-set-variables
