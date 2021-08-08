@@ -169,20 +169,9 @@
   (use-package company-restclient
     :ensure t))
 
-;; windows system
-(when (window-system)
-  (set-background-color "gray20")
-  (set-foreground-color "white")
-  (global-set-key "\C-x\C-c" 'ask-before-closing)
-  (tool-bar-mode -1))
-
-;; ask to exit before closing
-(defun ask-before-closing ()
-  "Ask whether or not to close, and then close if y was pressed"
-  (interactive)
-  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
-      (save-buffers-kill-terminal)
-    (message "Cancelled exit")))
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (defun unfill-paragraph ()
   "define a new command to join multiple lines together."
@@ -191,11 +180,6 @@
   (setq fill-column 100000)
   (fill-paragraph nil)
   (setq fill-column backup))
-
-(defun set-80-columns ()
-  "Set the selected window to 80 columns."
-  (interactive)
-  (window-resize (selected-window) (- 82 (window-width)) t))
 
 (defun add-keywords-faces ()
   "Defines the operators to be highlighted."
@@ -230,7 +214,8 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
+    (rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
+ '(rainbow-delimiters-max-face-count 9)
  '(read-process-output-max (* 1024 1024))
  '(save-place-mode t)
  '(send-mail-function (quote mailclient-send-it))
@@ -247,7 +232,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(font-lock-comment-face ((t (:foreground "color-130"))))
- '(font-lock-constant-face ((t (:foreground "color-45"))))
+ '(font-lock-constant-face ((t (:foreground "color-208"))))
  '(font-lock-doc-face ((t (:inherit font-lock-string-face :foreground "chocolate"))))
  '(font-lock-function-name-face ((t (:foreground "brightcyan"))))
  '(font-lock-keyword-face ((t (:foreground "brightmagenta"))))
@@ -268,5 +253,15 @@
  '(magit-section-highlight ((t (:background "color-236"))))
  '(match ((t (:background "color-136"))))
  '(minibuffer-prompt ((t (:foreground "brightcyan"))))
+ '(rainbow-delimiters-base-error-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightred"))))
+ '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightyellow"))))
+ '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightcyan"))))
+ '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "color-189"))))
+ '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightmagenta"))))
+ '(rainbow-delimiters-depth-5-face ((t (:inherit rainbow-delimiters-base-face :foreground "color-26"))))
+ '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightwhite"))))
+ '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "green"))))
+ '(rainbow-delimiters-depth-8-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightmagenta"))))
+ '(rainbow-delimiters-depth-9-face ((t (:inherit rainbow-delimiters-base-face :foreground "blue"))))
  '(region ((t (:background "color-240"))))
  '(show-paren-match ((t (:inherit nil :background "cyan")))))
