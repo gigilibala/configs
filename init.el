@@ -86,22 +86,24 @@
   (define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
   (use-package yasnippet-snippets
     :ensure t))
+
 (use-package highlight-numbers
   :ensure t
-  :config
-  (add-hook 'prog-mode-hook 'highlight-numbers-mode))
+  :hook (prog-mode . highlight-numbers-mode))
 
-(use-package flymd
-  :commands (flymd-flyit)
-  :ensure t)
+(use-package markdown-mode
+  :ensure t
+  :config
+  (use-package flymd
+    :commands (flymd-flyit)
+    :ensure t))
 
 (use-package wc-mode
   :ensure t)
 
 (use-package google-c-style
   :ensure t
-  :init
-  (add-hook 'c-mode-common-hook 'google-set-c-style))
+  :hook (c-mode . google-c-style))
 
 (use-package expand-region
   :commands ( er/expand-region er/contract-region )
@@ -109,16 +111,11 @@
          ("M--" . er/contract-region))
   :ensure t)
 
-(use-package markdown-mode
-  :ensure t)
-
 (use-package company
   :ensure t
   :config
   (setq company-idle-delay 0 company-minimum-prefix-length 3)
   (global-company-mode t)
-  (use-package company-c-headers
-    :ensure t)
   (use-package company-web
     :ensure t))
 
@@ -127,7 +124,7 @@
 ;    :upgrade t))
 
 (use-package git-commit
-  :ensure nil
+  :ensure t
   :preface
   (defun me/git-commit-set-fill-column ()
     (setq-local comment-auto-fill-only-comments nil)
@@ -147,6 +144,7 @@
 (use-package go-mode
   :ensure t)
 
+;; LSP for python
 (use-package lsp-pyright
   :ensure t)
 
@@ -158,8 +156,6 @@
 
 (use-package lsp-ui
   :ensure t)
-
-; (elpy-enable)
 
 (use-package restclient
   :ensure t
