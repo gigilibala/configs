@@ -204,6 +204,7 @@
  '(inhibit-startup-screen t)
  '(line-number-mode t)
  '(make-backup-files nil)
+ '(menu-bar-mode nil)
  '(mouse-1-click-follows-link (quote double))
  '(mouse-wheel-mode t)
  '(mouse-wheel-progressive-speed nil)
