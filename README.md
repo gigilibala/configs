@@ -8,7 +8,7 @@ To setup the emacs `init.el` file:
 
 ```bash
 $ mkdir $HOME/.emacs.d
-$ ln -s configs/init.el $HOME/.emacs.d/init.el
+$ ln -s $HOME/configs/init.el $HOME/.emacs.d/init.el
 ```
 
 The first time starting emacs, it will fail as you need to install
@@ -18,7 +18,7 @@ through `package-list-packages`). Then try to load emacs again.
 ## Bash Profile
 
 ```bash
-$ cat > ~/.bashrc
+$ cat >> ~/.bashrc
 . $HOME/configs/bashrc
 ^C
 ```
@@ -26,5 +26,5 @@ $ cat > ~/.bashrc
 ## Tmux
 
 ```bash
-$ ln -s configs/tmux.conf $HOME/.tmux.conf
+$ ln -s $HOME/configs/tmux.conf $HOME/.tmux.conf
 ```
