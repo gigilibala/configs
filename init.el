@@ -169,6 +169,9 @@
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package docker
+  :ensure t)
+
 (defun unfill-paragraph ()
   "define a new command to join multiple lines together."
   (interactive)
@@ -193,6 +196,7 @@
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(before-save-hook (quote (delete-trailing-whitespace)))
  '(column-number-mode t)
+ '(cursor-type (quote bar))
  '(delete-selection-mode t)
  '(electric-pair-mode t)
  '(fill-column 80)
@@ -211,7 +215,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
+    (docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
  '(rainbow-delimiters-max-face-count 9)
  '(read-process-output-max (* 1024 1024))
  '(save-place-mode t)
