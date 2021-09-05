@@ -60,6 +60,9 @@
               ("RET" . magit-diff-visit-file-other-window)
               :map magit-hunk-section-map
               ("RET" . magit-diff-visit-file-other-window))
+  :config (magit-add-section-hook 'magit-status-sections-hook
+                                  'magit-insert-local-branches
+                                  nil t)
   :custom-face
   (magit-branch-current ((t (:inherit magit-branch-local :box 1))))
   (magit-branch-local ((t (:foreground "red"))))
@@ -69,6 +72,7 @@
   (magit-diff-removed ((t (:foreground "#aa2222"))))
   (magit-diff-removed-highlight ((t (:inherit magit-section-highlight :foreground "#aa2222"))))
   (magit-section-highlight ((t (:background "color-236")))))
+
 
 (use-package smooth-scrolling
   :ensure t
@@ -172,6 +176,18 @@
 (use-package docker
   :ensure t)
 
+(use-package bazel
+  :ensure t)
+
+(use-package project
+  :ensure t)
+
+(use-package protobuf-mode
+  :ensure t)
+
+(use-package yaml-mode
+  :ensure t)
+
 (defun unfill-paragraph ()
   "define a new command to join multiple lines together."
   (interactive)
@@ -215,7 +231,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
+    (yaml-mode protobuf-mode project bazel docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
  '(rainbow-delimiters-max-face-count 9)
  '(read-process-output-max (* 1024 1024))
  '(save-place-mode t)
