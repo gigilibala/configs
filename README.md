@@ -1,4 +1,4 @@
-# Amin's Developing Configs
+# Developing Configs
 
 These are some of my editor config files. Feel free to use them.
 
