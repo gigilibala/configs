@@ -4,6 +4,8 @@ export ALTERNATE_EDITOR=''
 export EDITOR='emacsclient -t'
 export SVN_EDITOR='emacsclient -t'
 export TERM=xterm-256color
+alias k='kubectl'
+
 
 IGNOREEOF=10
 

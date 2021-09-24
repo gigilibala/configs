@@ -15,6 +15,8 @@
 (global-set-key [backspace] 'delete-backward-char) ;delete backward with backspace
 ;; goto line
 (global-set-key (kbd "C-c g l") 'goto-line)
+;; grep-find
+(global-set-key (kbd "C-c g f") 'grep-find)
 ;; next error or grep finding.
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
@@ -97,6 +99,7 @@
 
 (use-package markdown-mode
   :ensure t
+  :init (setq markdown-command "/usr/bin/pandoc")
   :config
   (use-package flymd
     :commands (flymd-flyit)
@@ -188,6 +191,9 @@
 (use-package yaml-mode
   :ensure t)
 
+(use-package terraform-mode
+  :ensure t)
+
 (defun unfill-paragraph ()
   "define a new command to join multiple lines together."
   (interactive)
@@ -231,7 +237,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (yaml-mode protobuf-mode project bazel docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
+    (terraform-mode yaml-mode protobuf-mode project bazel docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
  '(rainbow-delimiters-max-face-count 9)
  '(read-process-output-max (* 1024 1024))
  '(save-place-mode t)
