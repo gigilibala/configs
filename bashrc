@@ -45,6 +45,9 @@ function apply-cl() {
   git cherry-pick FETCH_HEAD;
 }
 
+export GOPATH="${HOME}/go"
+export GOBIN="${GOPATH}/bin"
+
 export PATH=$PATH:$HOME/usr/bin:/opt/android-studio/bin:$HOME/go/bin:$HOME/bin
 
 if [[ -f /usr/share/autojump/autojump.sh ]]; then

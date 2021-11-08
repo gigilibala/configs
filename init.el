@@ -62,9 +62,11 @@
               ("RET" . magit-diff-visit-file-other-window)
               :map magit-hunk-section-map
               ("RET" . magit-diff-visit-file-other-window))
-  :config (magit-add-section-hook 'magit-status-sections-hook
-                                  'magit-insert-local-branches
-                                  nil t)
+  :config
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-local-branches
+                          nil t)
+  (remove-hook 'magit-status-headers-hook 'magit-insert-tags-header)
   :custom-face
   (magit-branch-current ((t (:inherit magit-branch-local :box 1))))
   (magit-branch-local ((t (:foreground "red"))))
