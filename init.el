@@ -232,6 +232,7 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(line-number-mode t)
+ '(lsp-enable-file-watchers nil)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(mouse-1-click-follows-link 'double)
