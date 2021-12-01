@@ -161,6 +161,7 @@
   :ensure t
   :hook (go-mode . lsp)
   :hook (python-mode . lsp)
+  :bind ("C-c C-r" . 'lsp-rename)
   :commands lsp)
 
 (use-package lsp-ui
@@ -217,10 +218,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-save-default nil)
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(before-save-hook (quote (delete-trailing-whitespace)))
+ '(backup-directory-alist '((".*" . "~/.emacs.d/backups/")))
+ '(before-save-hook '(delete-trailing-whitespace))
  '(column-number-mode t)
- '(cursor-type (quote bar))
+ '(cursor-type 'bar)
  '(delete-selection-mode t)
  '(electric-pair-mode t)
  '(fill-column 80)
@@ -233,7 +234,7 @@
  '(line-number-mode t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
- '(mouse-1-click-follows-link (quote double))
+ '(mouse-1-click-follows-link 'double)
  '(mouse-wheel-mode t)
  '(mouse-wheel-progressive-speed nil)
  '(org-startup-truncated nil)
@@ -241,14 +242,14 @@
    (quote
     (terraform-mode yaml-mode protobuf-mode project bazel docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
  '(rainbow-delimiters-max-face-count 9)
- '(read-process-output-max (* 1024 1024))
+ '(read-process-output-max (* 1024 1024) t)
  '(save-place-mode t)
- '(send-mail-function (quote mailclient-send-it))
+ '(send-mail-function 'mailclient-send-it)
  '(show-paren-delay 0)
  '(show-paren-mode t)
  '(split-height-threshold nil)
  '(split-width-threshold nil)
- '(tab-always-indent (quote complete))
+ '(tab-always-indent 'complete)
  '(tab-width 2)
  '(xterm-mouse-mode t))
 (custom-set-faces
