@@ -67,6 +67,8 @@
                           'magit-insert-local-branches
                           nil t)
   (remove-hook 'magit-status-headers-hook 'magit-insert-tags-header)
+  (setq magit-stage-all-confirm nil)
+  (setq magit-unstage-all-confirm nil)
   :custom-face
   (magit-branch-current ((t (:inherit magit-branch-local :box 1))))
   (magit-branch-local ((t (:foreground "red"))))
