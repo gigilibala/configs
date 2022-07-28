@@ -63,6 +63,7 @@
               :map magit-hunk-section-map
               ("RET" . magit-diff-visit-file-other-window))
   :config
+  (add-to-list 'magit-no-confirm 'stage-all-changes)
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-local-branches
                           nil t)
@@ -220,10 +221,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-save-default nil)
- '(backup-directory-alist '((".*" . "~/.emacs.d/backups/")))
- '(before-save-hook '(delete-trailing-whitespace))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(before-save-hook (quote (delete-trailing-whitespace)))
  '(column-number-mode t)
- '(cursor-type 'bar)
+ '(cursor-type (quote bar))
  '(delete-selection-mode t)
  '(electric-pair-mode t)
  '(fill-column 80)
@@ -233,26 +234,28 @@
  '(global-subword-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(js-indent-level 2)
  '(line-number-mode t)
  '(lsp-enable-file-watchers nil)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
- '(mouse-1-click-follows-link 'double)
+ '(mouse-1-click-follows-link (quote double))
  '(mouse-wheel-mode t)
  '(mouse-wheel-progressive-speed nil)
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (terraform-mode yaml-mode protobuf-mode project bazel docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
+    (github-review terraform-mode yaml-mode protobuf-mode project bazel docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
  '(rainbow-delimiters-max-face-count 9)
  '(read-process-output-max (* 1024 1024) t)
  '(save-place-mode t)
- '(send-mail-function 'mailclient-send-it)
+ '(send-mail-function (quote mailclient-send-it))
+ '(sh-basic-offset 2)
  '(show-paren-delay 0)
  '(show-paren-mode t)
  '(split-height-threshold nil)
  '(split-width-threshold nil)
- '(tab-always-indent 'complete)
+ '(tab-always-indent (quote complete))
  '(tab-width 2)
  '(xterm-mouse-mode t))
 (custom-set-faces

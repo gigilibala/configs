@@ -66,3 +66,7 @@ function set-host() {
 function cros-scp() {
   scp  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentityFile=~/.ssh/testing_rsa $1 $2
 }
+
+function mykill() {
+  ps -ef | grep '$1' | grep -v grep | awk '{print $2}' | xargs -r sudo kill -9
+}
