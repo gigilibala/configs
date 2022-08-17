@@ -88,16 +88,6 @@
         scroll-step 1
         smooth-scroll-margin 1))
 
-(use-package yasnippet
-  :ensure t
-  :bind (("C-c C-y" . yas-insert-snippet))
-  :config
-  (yas-global-mode t)
-  (define-key yas-minor-mode-map (kbd "TAB") nil)
-  (define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
-  (use-package yasnippet-snippets
-    :ensure t))
-
 (use-package highlight-numbers
   :ensure t
   :hook (prog-mode . highlight-numbers-mode))
@@ -221,10 +211,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-save-default nil)
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(before-save-hook (quote (delete-trailing-whitespace)))
+ '(backup-directory-alist '((".*" . "~/.emacs.d/backups/")))
+ '(before-save-hook '(delete-trailing-whitespace))
  '(column-number-mode t)
- '(cursor-type (quote bar))
+ '(cursor-type 'bar)
  '(delete-selection-mode t)
  '(electric-pair-mode t)
  '(fill-column 80)
@@ -239,23 +229,22 @@
  '(lsp-enable-file-watchers nil)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
- '(mouse-1-click-follows-link (quote double))
+ '(mouse-1-click-follows-link 'double)
  '(mouse-wheel-mode t)
  '(mouse-wheel-progressive-speed nil)
  '(org-startup-truncated nil)
  '(package-selected-packages
-   (quote
-    (github-review terraform-mode yaml-mode protobuf-mode project bazel docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package yasnippet-snippets which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers)))
+   '(github-review terraform-mode yaml-mode protobuf-mode project bazel docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers))
  '(rainbow-delimiters-max-face-count 9)
  '(read-process-output-max (* 1024 1024) t)
  '(save-place-mode t)
- '(send-mail-function (quote mailclient-send-it))
+ '(send-mail-function 'mailclient-send-it)
  '(sh-basic-offset 2)
  '(show-paren-delay 0)
  '(show-paren-mode t)
  '(split-height-threshold nil)
  '(split-width-threshold nil)
- '(tab-always-indent (quote complete))
+ '(tab-always-indent 'complete)
  '(tab-width 2)
  '(xterm-mouse-mode t))
 (custom-set-faces
