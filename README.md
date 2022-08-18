@@ -1,30 +1,17 @@
-# Developing Configs
+# Development Configs
 
 These are some of my editor config files. Feel free to use them.
 
-## Emacs
+## Initial Setup
 
-To setup the emacs `init.el` file:
+Just run:
 
 ```bash
-$ mkdir $HOME/.emacs.d
-$ ln -s $HOME/configs/init.el $HOME/.emacs.d/init.el
+$HOME/configs/setup.sh
 ```
+
+## Emacs
 
 The first time starting emacs, it will fail as you need to install
 [`use-package`](https://github.com/jwiegley/use-package) package first (probably
 through `package-list-packages`). Then try to load emacs again.
-
-## Bash Profile
-
-```bash
-$ cat >> ~/.bashrc
-. $HOME/configs/bashrc
-^C
-```
-
-## Tmux
-
-```bash
-$ ln -s $HOME/configs/tmux.conf $HOME/.tmux.conf
-```

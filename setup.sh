@@ -3,7 +3,10 @@
 
 # TODO(gigilibala): Make this Linux vs Mac OS dependent.
 
-ln --symbolic "${HOME}/emacs.d/init.el" "${HOME}/configs/init.el" || true
+mkdir --parent "${HOME}/.emacs.d"
+ln --symbolic "${HOME}/configs/init.el" "${HOME}/emacs.d/init.el" || true
+
+ln --symbolic "${HOME}/configs/tmux.conf" "${HOME}/.tmux.conf" || true
 
 if ! grep "source \$HOME/configs/bashrc" "${HOME}/.bashrc"; then
   echo "source \$HOME/configs/bashrc" >> "${HOME}/.bashrc"
