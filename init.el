@@ -69,16 +69,7 @@
                           nil t)
   (remove-hook 'magit-status-headers-hook 'magit-insert-tags-header)
   (setq magit-stage-all-confirm nil)
-  (setq magit-unstage-all-confirm nil)
-  :custom-face
-  (magit-branch-current ((t (:inherit magit-branch-local :box 1))))
-  (magit-branch-local ((t (:foreground "red"))))
-  (magit-diff-added ((t (:foreground "#22aa22"))))
-  (magit-diff-added-highlight ((t (:inherit magit-section-highlight :foreground "#22aa22"))))
-  (magit-diff-context-highlight ((t (:inherit magit-section-highlight))))
-  (magit-diff-removed ((t (:foreground "#aa2222"))))
-  (magit-diff-removed-highlight ((t (:inherit magit-section-highlight :foreground "#aa2222"))))
-  (magit-section-highlight ((t (:background "color-236")))))
+  (setq magit-unstage-all-confirm nil))
 
 
 (use-package smooth-scrolling
@@ -121,9 +112,9 @@
   (use-package company-web
     :ensure t))
 
-; (use-package company-popup
-; :quelpa ((company-popup :fetcher github :repo "gigilibala/company-popup")
-;    :upgrade t))
+;(use-package company-popup
+;:quelpa ((company-popup :fetcher github :repo "gigilibala/company-popup")
+;   :upgrade t))
 
 (use-package git-commit
   :ensure t
@@ -187,6 +178,11 @@
 (use-package yaml-mode
   :ensure t)
 
+(use-package afternoon-theme
+  :ensure t
+  :config
+  (load-theme 'afternoon t))
+
 (use-package terraform-mode
   :ensure t)
 
@@ -215,6 +211,8 @@
  '(before-save-hook '(delete-trailing-whitespace))
  '(column-number-mode t)
  '(cursor-type 'bar)
+ '(custom-safe-themes
+   '("57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
  '(delete-selection-mode t)
  '(electric-pair-mode t)
  '(fill-column 80)
@@ -234,7 +232,7 @@
  '(mouse-wheel-progressive-speed nil)
  '(org-startup-truncated nil)
  '(package-selected-packages
-   '(github-review terraform-mode yaml-mode protobuf-mode project bazel docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers))
+   '(afternoon-theme github-review terraform-mode yaml-mode protobuf-mode project bazel docker rainbow-delimiters lsp-ui lsp-pyright go-mode lsp-mode company-restclient restclient markdown-mode quelpa-use-package which-key wc-mode use-package smooth-scrolling python-info magit ivy-rich highlight-numbers google-c-style flymd expand-region counsel company company-web company-c-headers))
  '(rainbow-delimiters-max-face-count 9)
  '(read-process-output-max (* 1024 1024) t)
  '(save-place-mode t)
@@ -252,37 +250,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-lock-comment-face ((t (:foreground "color-130"))))
- '(font-lock-constant-face ((t (:foreground "color-208"))))
- '(font-lock-doc-face ((t (:inherit font-lock-string-face :foreground "chocolate"))))
- '(font-lock-function-name-face ((t (:foreground "brightcyan"))))
- '(font-lock-keyword-face ((t (:foreground "brightmagenta"))))
- '(font-lock-negation-char-face ((t (:foreground "brightred"))))
- '(font-lock-string-face ((t (:foreground "brightgreen"))))
- '(font-lock-type-face ((t (:foreground "color-196"))))
- '(font-lock-variable-name-face ((t (:foreground "color-154"))))
- '(font-lock-warning-face ((t (:inherit nil :foreground "color-214"))))
- '(highlight ((t (:background "color-235"))))
- '(lazy-highlight ((t (:background "brightblack"))))
- '(magit-branch-current ((t (:inherit magit-branch-local :box 1))))
- '(magit-branch-local ((t (:foreground "red"))))
- '(magit-diff-added ((t (:foreground "#22aa22"))))
- '(magit-diff-added-highlight ((t (:inherit magit-section-highlight :foreground "#22aa22"))))
- '(magit-diff-context-highlight ((t (:inherit magit-section-highlight))))
- '(magit-diff-removed ((t (:foreground "#aa2222"))))
- '(magit-diff-removed-highlight ((t (:inherit magit-section-highlight :foreground "#aa2222"))))
- '(magit-section-highlight ((t (:background "color-236"))))
- '(match ((t (:background "color-136"))))
- '(minibuffer-prompt ((t (:foreground "brightcyan"))))
- '(rainbow-delimiters-base-error-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightred"))))
- '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightyellow"))))
- '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightcyan"))))
- '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "color-189"))))
- '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightmagenta"))))
- '(rainbow-delimiters-depth-5-face ((t (:inherit rainbow-delimiters-base-face :foreground "color-26"))))
- '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightwhite"))))
- '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "green"))))
- '(rainbow-delimiters-depth-8-face ((t (:inherit rainbow-delimiters-base-face :foreground "brightmagenta"))))
- '(rainbow-delimiters-depth-9-face ((t (:inherit rainbow-delimiters-base-face :foreground "blue"))))
- '(region ((t (:background "color-240"))))
- '(show-paren-match ((t (:inherit nil :background "cyan")))))
+ )
