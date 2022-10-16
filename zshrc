@@ -10,6 +10,8 @@ alias ls='ls -G'
 alias ll='ls -lG'
 alias la='ls -aG'
 alias lla='ls -alG'
+alias python='/usr/bin/python3'
+alias pip='/usr/bin/pip3'
 
 IGNOREEOF=10
 
@@ -55,3 +57,9 @@ export PATH="${PATH}:${GOBIN}"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+
+# Setup NVM for node
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"  # This loads nvm
+[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
