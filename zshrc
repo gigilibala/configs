@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 alias emacs='emacsclient -t'
 export ALTERNATE_EDITOR=''
@@ -10,11 +10,10 @@ alias ls='ls -G'
 alias ll='ls -lG'
 alias la='ls -aG'
 alias lla='ls -alG'
-alias python='/usr/bin/python3'
-alias pip='/usr/bin/pip3'
 
 IGNOREEOF=10
 
+# Setup a nice prompt.
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' formats '(%b)'
 precmd() { vcs_info }
@@ -41,25 +40,38 @@ function grep-replace-file() {
   eval $command
 }
 
-function apply-cl() {
-  ref=`git ls-remote cros | grep $1 | cut -f2`;
-  git fetch cros $ref;
-  git cherry-pick FETCH_HEAD;
-}
-
-export PATH="${PATH}:${HOME}/bin"
-
-export GOPATH="${HOME}/go"
+if command -v go 1>/dev/null 2>&1; then
+export GOPATH="${HOME}/.go"
 export GOBIN="${GOPATH}/bin"
 export PATH="${PATH}:${GOBIN}"
+fi
 
+# Setup Python
+# alias python='python3'
+# alias pip='pip3'
+if command -v python3 1>/dev/null 2>&1; then
+  export PATH="${PATH}:$(python3 -m site --user-base)/bin"
+fi
 
+# I think this only works if you have installed pyenv.
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
-
 
 # Setup NVM for node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"  # This loads nvm
 [ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# Setup yarn global directory.
+if command -v yarn 1>/dev/null 2>&1; then
+  export PATH="${PATH}:$(yarn global bin)"
+fi
+
+# Setup Android Studio
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_SDK_ROOT="${ANDROID_HOME}"
+export PATH="${ANDROID_HOME}/platform-tools:${PATH}"
+
+# Setup Java
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/Contents/Home"
