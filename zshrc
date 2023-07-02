@@ -75,3 +75,6 @@ export PATH="${ANDROID_HOME}/platform-tools:${PATH}"
 
 # Setup Java
 export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/Contents/Home"
+
+# Setup ruby
+eval "$(rbenv init - zsh)"
