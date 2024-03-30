@@ -1,25 +1,15 @@
 #!/bin/zsh
 
-alias emacs='emacsclient -t'
+#alias emacs='emacsclient -t'
 export ALTERNATE_EDITOR=''
-export EDITOR='emacsclient -t'
-export SVN_EDITOR='emacsclient -t'
-export TERM=xterm-256color
+export EDITOR='emacs'
+export SVN_EDITOR='emacs'
+# export TERM=xterm-256color
 alias k='kubectl'
 alias ls='ls -G'
 alias ll='ls -lG'
 alias la='ls -aG'
 alias lla='ls -alG'
-
-IGNOREEOF=10
-
-# Setup a nice prompt.
-autoload -Uz vcs_info
-zstyle ':vcs_info:git:*' formats '(%b)'
-precmd() { vcs_info }
-setopt PROMPT_SUBST
-export PROMPT='%F{magenta}%n%F{reset_color}@%F{magenta}%m%F{reset_color}:% %F{green}%~%F{reset_color} %F{yellow}${vcs_info_msg_0_}%F{reset_color}
-$ '
 
 # usage: mygrep <string>
 function mygrep() {
@@ -69,12 +59,12 @@ if command -v yarn 1>/dev/null 2>&1; then
 fi
 
 # Setup Android Studio
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export ANDROID_SDK_ROOT="${ANDROID_HOME}"
-export PATH="${ANDROID_HOME}/platform-tools:${PATH}"
+export ANDROID_HOME="${HOME}/Library/Android/sdk"
+export PATH="${PATH}:${ANDROID_HOME}/platform-tools"
+export PATH="${PATH}:${ANDROID_HOME}/emulator"
 
 # Setup Java
-export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 
 # Setup ruby
 eval "$(rbenv init - zsh)"
