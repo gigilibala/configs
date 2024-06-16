@@ -11,7 +11,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
   git
-  zsh-autosuggestions
   zsh-syntax-highlighting
   fast-syntax-highlighting
   zsh-autocomplete
@@ -23,7 +22,6 @@ source $HOME/.oh-my-zsh/oh-my-zsh.sh
 export ALTERNATE_EDITOR=''
 export EDITOR='emacs'
 export SVN_EDITOR='emacs'
-# export TERM=xterm-256color
 alias k='kubectl'
 alias ls='ls -G'
 alias ll='ls -lG'
@@ -69,13 +67,8 @@ fi
 
 # Setup NVM for node
 export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"  # This loads nvm
-[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# Setup yarn global directory.
-if command -v yarn 1>/dev/null 2>&1; then
-  export PATH="${PATH}:$(yarn global bin)"
-fi
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Setup Android Studio
 export ANDROID_HOME="${HOME}/Library/Android/sdk"
